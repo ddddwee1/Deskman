@@ -1,0 +1,4 @@
+1. get random item from database. Based on level and rarity, type, maybe specific label(item pool).
+2. get specific item from database. Based on the id.
+3. inquire a name. return list(array) of id.
+
