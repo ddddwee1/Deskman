@@ -2,11 +2,14 @@ package com.deskman.util;
 
 import java.util.HashMap;
 import java.util.HashSet;
-
+//
+// TODO 为用户个性化物品。
+//
 public class Item {
 	private String name;
 	private int id = -1;
-	private int level = -1;
+	private int instance = -1; // -1为白版存在资料库里，用户每得到该物品就新生成一个放在用户资料里
+	private int exp = -1;
 	private int rarity = -1;
 	private String type = "equipment"; // skill, consumable, equipment
 	private HashSet<String> category = new HashSet<String>(); //label & tag & item pool
@@ -19,10 +22,18 @@ public class Item {
 		this.name = name;
 	}
 
-	public Item(String name, int id, int level, int rarity, String type) {
+	public Item(String name, int id, int rarity, String type) {
 		this.id = id;
 		this.name = name;
-		this.level = level;
+
+		this.rarity = rarity;
+		this.type = type;
+	}
+
+	public Item(String name, int id, int instance, int exp, int rarity, String type) {
+		this.id = id;
+		this.name = name;
+		this.exp = exp;
 		this.rarity = rarity;
 		this.type = type;
 	}
@@ -35,6 +46,14 @@ public class Item {
 		this.id = id;
 	}
 
+	public int getInstance() {
+		return instance;
+	}
+
+	public void setInstance(int id) {
+		this.instance = instance;
+	}
+
 	public String getName() {
 		return name;
 	}
@@ -43,12 +62,12 @@ public class Item {
 		this.name = name;
 	}
 
-	public int getLevel() {
-		return level;	
+	public int getExp() {
+		return exp;	
 	}
 
-	public void setLevel(int level) {
-		this.level = level;
+	public void setExp(int exp) {
+		this.exp = exp;
 	}
 
 	public int getRarity() {
@@ -117,5 +136,9 @@ public class Item {
 		if (this.exAttr.get(attrKey)==null)
 			this.exAttr.put(attrKey, attrValue);
 		// 我懒得throw exception
+	}
+
+	public void delExAttr(String attrKey) {
+		this.exAttr.remove(attrKey);
 	}
 }
