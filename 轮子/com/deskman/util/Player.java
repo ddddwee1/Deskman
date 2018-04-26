@@ -10,8 +10,14 @@ public class Player {
  	private HashMap<Integer, Integer> item = new HashMap<Integer, Integer>();
  	private HashMap<Integer, Integer> skill = new HashMap<Integer, Integer>();
  	private HashMap<String, Object> exAttr = new HashMap<String, Object>();
+ 	private ArrayList<String> status = new ArrayList<String>();
  	private ArrayList<HashMap<Integer, Integer>> sets = new ArrayList<HashMap<Integer, Integer>>(6);
  	private int activeSet = 0;
+ 	private ArrayList<HashMap<Integer, Integer>> equipments = new ArrayList<HashMap<Integer, Integer>>(6);
+ 	private int activeEquipment = 0;
+ 	private float hp = 100;
+ 	private float mp = 100;
+
 
 	//***********************************
 	// Constructors
@@ -36,76 +42,94 @@ public class Player {
 		return id;
 	}
 
-	public void setId(int id) {
+	public int setId(int id) {
 		this.id = id;
+		return id;
 	}
 
 	public String getName() {
 		return name;
 	}
 
-	public void setName(String name) {
+	public String setName(String name) {
 		this.name = name;
+		return this.name;
 	}
 
 	public int getExp() {
 		return exp;	
 	}
 
-	public void setExp(int exp) {
+	public int setExp(int exp) {
 		this.exp = exp;
+		return this.exp;
 	}
 
 	public long getLastOnline() {
 		return lastOnline;
 	}
 
-	public void setLastOnline(long lastOnline) {
+	public long setLastOnline(long lastOnline) {
 		this.lastOnline = lastOnline;
+		return this.lastOnline;
 	}
 
-	public String[] getItemKeys() {
-		return this.Item.keySet().toArray();
+	public Integer[] getItemKeys() {
+		return this.item.keySet().toArray();
 	}
 
-	public String[] getItemValues() {
-		return this.Item.values().toArray();
+	public Integer[] getItemValues() {
+		return this.item.values().toArray();
 	}
 
-	public Object getItemValue(String ItemKey) {
-		return this.Item.get(ItemKey);
+	public Integer getItemValue(Integer itemKey) {
+		return this.item.get(itemKey);
 	}
 
-	public void setItem(String ItemKey, Object ItemValue) {
-		this.Item.put(ItemKey, ItemValue);
+	public Integer setItem(Integer itemKey, Integer itemValue) {
+		if (itemValue != null)
+			this.item.put(itemKey, itemValue);
+		return this.item.get(itemKey);
 	}
 
-	public void addItem(String ItemKey, Object ItemValue) {
-		if (this.Item.get(ItemKey)==null)
-			this.Item.put(ItemKey, ItemValue);
+	public Integer addItem(Integer itemKey, Integer itemValue) {
+		if (this.item.get(itemKey)==null && itemValue!=null)
+			this.item.put(itemKey, itemValue);
 		// 我懒得throw exception
+		return this.item.get(itemKey);
 	}
 
-	public String[] getSkillKeys() {
-		return this.Skill.keySet().toArray();
+	public void delItem(String itemKey) {
+		this.item.remove(itemKey);
 	}
 
-	public String[] getSkillValues() {
-		return this.Skill.values().toArray();
+	public Integer[] getSkillKeys() {
+		return this.skill.keySet().toArray();
 	}
 
-	public Object getSkillValue(String SkillKey) {
-		return this.Skill.get(SkillKey);
+	public Integer[] getSkillValues() {
+		return this.skill.values().toArray();
 	}
 
-	public void setSkill(String SkillKey, Object SkillValue) {
-		this.Skill.put(SkillKey, SkillValue);
+	public Integer getSkillValue(Integer skillKey) {
+		return this.skill.get(skillKey);
 	}
 
-	public void addSkill(String SkillKey, Object SkillValue) {
-		if (this.Skill.get(SkillKey)==null)
-			this.Skill.put(SkillKey, SkillValue);
+	public Integer setSkill(Integer skillKey, Integer skillValue) {
+		if (skillValue != null)
+			this.skill.put(skillKey, skillValue);
+		return this.skill.get(skillKey);
+	}
+
+	public Integer addSkill(Integer skillKey, Integer skillValue) {
+		if (this.skill.get(skillKey)==null && skillValue != null)
+			this.skill.put(skillKey, skillValue);
 		// 我懒得throw exception
+		return this.skill.get(skillKey);
+	}
+
+	public void delSkill(Integer skillKey) {
+		this.skill.remove(skillKey);
 	}
 
 	public String[] getExAttrKeys() {
@@ -116,13 +140,15 @@ public class Player {
 		return this.exAttr.get(attrKey);
 	}
 
-	public void setExAttr(String attrKey, Object attrValue) {
+	public Object setExAttr(String attrKey, Object attrValue) {
 		this.exAttr.put(attrKey, attrValue);
+		return this.exAttr.get(attrKey);
 	}
 
-	public void addExAttr(String attrKey, Object attrValue) {
+	public Object addExAttr(String attrKey, Object attrValue) {
 		if (this.exAttr.get(attrKey)==null)
 			this.exAttr.put(attrKey, attrValue);
+		return this.exAttr.get(attrKey);
 		// 我懒得throw exception
 	}
 
@@ -134,15 +160,68 @@ public class Player {
 		return this.sets.get(index);
 	}
 
-	public void setSet(int index, HashMap<Integer, Integer> set) {
+	public HashMap<Integer, Integer> setSet(int index, HashMap<Integer, Integer> set) {
 		this.sets.set(index, set);
+		return this.sets.get(index);
 	}
 
 	public int getActiveSet() {
 		return this.activeSet;
 	}
 
-	public void setActiveSet(int index) {
+	public int setActiveSet(int index) {
 		this.activeSet = index;
+		return this.activeSet;
+	}
+
+	public HashMap<Integer, Integer> getEquipment(int index) {
+		return this.equipments.get(index);
+	}
+
+	public HashMap<Integer, Integer> setEquipment(int index, HashMap<Integer, Integer> equipment) {
+		this.equipments.set(index, equipment);
+		return this.equipments.get(index);
+	}
+
+	public int getActiveEquipment() {
+		return this.activeEquipment;
+	}
+
+	public int setActiveEquipment(int index) {
+		this.activeEquipment = index;
+		return this.activeEquipment;
+	}
+
+	public float getHealth() {
+		return this.hp;
+	}
+
+	public float getMana() {
+		return this.mp;
+	}
+
+	// Do NOT use this two function in normal condition
+	public float setHealth(float hp) {
+		return this.hp;
+	}
+
+	// Do NOT use this two function in normal condition
+	public float setMana(float mp) {
+		return this.mp;
+	}
+
+	public ArrayList<String> getStatus() {
+		return this.status;
+	}
+
+	public ArrayList<String> addStatus(String... status) {
+		for (int i=0;i<status.length;i++) {
+			this.status.add(status[i]);
+		}
+		return status;
+	}
+
+	public void clearStatus(String... status) {
+		this.status.clear();
 	}
 }

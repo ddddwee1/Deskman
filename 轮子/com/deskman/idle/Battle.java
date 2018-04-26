@@ -3,10 +3,16 @@ package com.deskman.idle;
 import java.util.ArrayList;
 
 
+import com.deskman.util.Hero;
+
+
 //
-// 需要玩家红蓝，当前牌组。怪物红蓝牌组。
+// 需要知道玩家红蓝，当前牌组。怪物红蓝牌组。
 //
 public class Battle {
+	//***********************************
+	// Fields
+	//***********************************
 	private ArrayList<Hero> heroes = new ArrayList<Hero>();
 	private ArrayList<Monster> monsters = new ArrayList<Monster>();
 
