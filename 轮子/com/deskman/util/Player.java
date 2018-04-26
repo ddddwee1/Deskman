@@ -10,7 +10,12 @@ public class Player {
  	private HashMap<Integer, Integer> item = new HashMap<Integer, Integer>();
  	private HashMap<Integer, Integer> skill = new HashMap<Integer, Integer>();
  	private HashMap<String, Object> exAttr = new HashMap<String, Object>();
+ 	private ArrayList<HashMap<Integer, Integer>> sets = new ArrayList<HashMap<Integer, Integer>>(6);
+ 	private int activeSet = 0;
 
+	//***********************************
+	// Constructors
+	//***********************************
 	public Player() {};
 
 	public Player(String name, int id) {
@@ -24,6 +29,9 @@ public class Player {
 		this.exp = exp;
 	}
 
+	//***********************************
+	// Methods
+	//***********************************
 	public int getId() {
 		return id;
 	}
@@ -120,5 +128,21 @@ public class Player {
 
 	public void delExAttr(String attrKey) {
 		this.exAttr.remove(attrKey);
+	}
+
+	public HashMap<Integer, Integer> getSet(int index) {
+		return this.sets.get(index);
+	}
+
+	public void setSet(int index, HashMap<Integer, Integer> set) {
+		this.sets.set(index, set);
+	}
+
+	public int getActiveSet() {
+		return this.activeSet;
+	}
+
+	public void setActiveSet(int index) {
+		this.activeSet = index;
 	}
 }
