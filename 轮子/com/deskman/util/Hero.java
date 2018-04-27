@@ -1,11 +1,13 @@
 package com.deskman.util;
 
-import com.deskman.idle.*;
 import java.util.*;
+
+
+import com.deskman.logic.Calculator;
 
 /**
  * Class to store player information during explore.
- *
+ * 需要做成父类或者接口，回去再研究。
  */
 public class Hero {
 	//***********************************
@@ -26,9 +28,9 @@ public class Hero {
 	//***********************************
 	// Constructors
 	//***********************************
-	private hero() {};
+	private Hero() {};
 
-	public hero(Player player) {
+	public Hero(Player player) {
 		this.id = player.getId();
 		this.name = player.getName();
 		int activeSet = player.getActiveSet();
@@ -42,7 +44,7 @@ public class Hero {
 		float[] iniAmplifier = new float[]{0,0,0,0,0,0} //I don't think we really have default amplifiers.
 		float[] attributes = new float[]{iniHealth, iniMana, iniMove, 
 			iniAmplifier[0], iniAmplifier[1], iniAmplifier[2], iniAmplifier[3], iniAmplifier[4], iniAmplifier[5]}; // 先假设有6个amp
-		attributes = Mechanism.modiAttributes(attributes, equipments, status);
+		attributes = Calculator.modiAttributes(attributes, equipments, status);
 		
 		// Set new attributes
 		this.health = attributes[0];
@@ -171,8 +173,13 @@ public class Hero {
 		return this.name;
 	}
 
+	// 请玩家不要在战斗中改名，这个方法不应该在任何时候被使用。
 	public String setName(String name) {
 		this.name = name;
 		return this.name;
+	}
+
+	public int getId() {
+		return this.id;
 	}
 }

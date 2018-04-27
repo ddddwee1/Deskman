@@ -13,7 +13,7 @@ public class Item {
 	private int rarity = -1;
 	private String type = "equipment"; // skill, consumable, equipment
 	private HashSet<String> category = new HashSet<String>(); //label & tag & item pool
- 	private HashMap<String, String> attr = new HashMap<String, String>();
+ 	private HashMap<String, String> attr = new HashMap<String, String>(); // attr还是要用string因为很多是公式。
  	private HashMap<String, Object> exAttr = new HashMap<String, Object>();
 
 	public Item() {};
@@ -25,7 +25,6 @@ public class Item {
 	public Item(String name, int id, int rarity, String type) {
 		this.id = id;
 		this.name = name;
-
 		this.rarity = rarity;
 		this.type = type;
 	}
@@ -106,15 +105,15 @@ public class Item {
 		return this.attr.values().toArray();
 	}
 
-	public Object getAttrValue(String attrKey) {
+	public String getAttrValue(String attrKey) {
 		return this.attr.get(attrKey);
 	}
 
-	public void setAttr(String attrKey, Object attrValue) {
+	public void setAttr(String attrKey, String attrValue) {
 		this.attr.put(attrKey, attrValue);
 	}
 
-	public void addAttr(String attrKey, Object attrValue) {
+	public void addAttr(String attrKey, String attrValue) {
 		if (this.attr.get(attrKey)==null)
 			this.attr.put(attrKey, attrValue);
 		// 我懒得throw exception
