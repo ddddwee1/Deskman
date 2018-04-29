@@ -14,7 +14,7 @@ public class Battle {
 	// Fields
 	//***********************************
 	private ArrayList<Hero> heroes = new ArrayList<Hero>();
-	private ArrayList<Monster> monsters = new ArrayList<Monster>();
+	private ArrayList<Enemy> enemies = new ArrayList<Enemy>();
 
 
 	//***********************************
@@ -30,32 +30,32 @@ public class Battle {
 		this.setHero(heroes);
 	}
 
-	public Battle(Monster monster) {
-		this.setMonster(monster);
+	public Battle(Enemy enemy) {
+		this.setEnemy(enemy);
 	}
 
-	public Battle(ArrayList<Monster> monsters) {
-		this.setMonster(monsters);
+	public Battle(ArrayList<Enemy> enemies) {
+		this.setEnemy(enemies);
 	}
 
-	public Battle(Hero hero, Monster monster) {
+	public Battle(Hero hero, Enemy enemy) {
 		this.setHero(hero);
-		this.setMonster(monster);
+		this.setEnemy(enemy);
 	}
 
-	public Battle(Hero hero, ArrayList<Monster> monsters) {
+	public Battle(Hero hero, ArrayList<Enemy> enemies) {
 		this.setHero(hero);
-		this.setMonster(monsters);
+		this.setEnemy(enemies);
 	}
 
-	public Battle(ArrayList<Hero> heroes, Monster monster) {
+	public Battle(ArrayList<Hero> heroes, Enemy enemy) {
 		this.setHero(heroes);
-		this.setMonster(monster);
+		this.setEnemy(enemy);
 	}
 
-	public Battle(ArrayList<Hero> heroes, ArrayList<Monster> monsters) {
+	public Battle(ArrayList<Hero> heroes, ArrayList<Enemy> enemies) {
 		this.setHero(heroes);
-		this.setMonster(monsters);
+		this.setEnemy(enemies);
 	}
 
 	//***********************************
@@ -69,12 +69,12 @@ public class Battle {
 		this.heroes.addAll(heroes);
 	}
 
-	public void addMonster(Monster monster) {
-		this.monsters.add(monster);
+	public void addEnemy(Enemy enemy) {
+		this.enemies.add(enemy);
 	}
 
-	public void addMonster(ArrayList<Monster> monsters) {
-		this.monsters.addAll(monsters);
+	public void addEnemy(ArrayList<Enemy> enemies) {
+		this.enemies.addAll(enemies);
 	}
 
 	public void setHero(Hero hero) {
@@ -87,14 +87,14 @@ public class Battle {
 		this.heroes.addAll(heroes);
 	}
 
-	public void setMonster(Monster monster) {
-		this.monsters = new ArrayList<Monster>();
-		this.monsters.add(monster);
+	public void setEnemy(Enemy enemy) {
+		this.enemies = new ArrayList<Enemy>();
+		this.enemies.add(enemy);
 	}
 
-	public void setMonster(ArrayList<Monster> monsters) {
-		this.monsters = new ArrayList<Monster>();
-		this.monsters.addAll(monsters);
+	public void setEnemy(ArrayList<Enemy> enemies) {
+		this.enemies = new ArrayList<Enemy>();
+		this.enemies.addAll(enemies);
 	}
 
 	private ArrayList<Item> generateCardList() {
@@ -108,7 +108,7 @@ public class Battle {
 	}
 
 	private void shuffle(HashMap<Integer, Integer> cards) {
-
+		
 	}
 
 	private int[] getHeroHP() {

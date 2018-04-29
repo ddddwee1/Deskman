@@ -3,6 +3,9 @@ package com.deskman.util;
 import java.util.*;
 
 public class Player {
+	//***********************************
+	// Fields
+	//***********************************
 	private String name;
 	private int id = -1;
 	private int exp = 0;

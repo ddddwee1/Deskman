@@ -6,6 +6,9 @@ import java.util.HashSet;
 // TODO 为用户个性化物品。
 //
 public class Item {
+	//***********************************
+	// Fields
+	//***********************************
 	private String name;
 	private int id = -1;
 	private int instance = -1; // -1为白版存在资料库里，用户每得到该物品就新生成一个放在用户资料里
@@ -16,6 +19,10 @@ public class Item {
  	private HashMap<String, String> attr = new HashMap<String, String>(); // attr还是要用string因为很多是公式。
  	private HashMap<String, Object> exAttr = new HashMap<String, Object>();
 
+
+ 	//***********************************
+	// Constructors
+	//***********************************
 	public Item() {};
 
 	public Item(String name) {
@@ -37,12 +44,16 @@ public class Item {
 		this.type = type;
 	}
 
+	//***********************************
+	// Methods
+	//***********************************
 	public int getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public int setId(int id) {
 		this.id = id;
+		return this.id;
 	}
 
 	public int getInstance() {
